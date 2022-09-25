@@ -14,8 +14,6 @@
 from queens import QueensState
 import unittest
 
-
-
 class TestQueensState(unittest.TestCase):
     def test_zero_queen_count_initially(self):
         state = QueensState(8, 8)
