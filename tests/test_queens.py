@@ -11,7 +11,7 @@
 # like "test_queen_count", since it doesn't entirely test the "queen_count" method,
 # but instead focuses on just one aspect of how it behaves.  You'll want to do likewise.
 
-from queens import QueensState
+from queens import *
 import unittest
 
 class TestQueensState(unittest.TestCase):
@@ -19,7 +19,16 @@ class TestQueensState(unittest.TestCase):
         state = QueensState(8, 8)
         self.assertEqual(state.queen_count(), 0)
 
-
+    def test_with_queens_added(self):
+        state = QueensState(8,8)
+        pos1 = Position(1,1)
+        pos2 = Position(2,2)
+        pos3 = Position(2,2)
+        positions = [pos1, pos2, pos3]
+        try:
+            newState = state.with_queens_added(positions)
+        except DuplicateQueenError as DupQueen:
+            self.assertEqual(str(DupQueen), 'duplicate queen in row 2 column 2')
 
 if __name__ == '__main__':
     unittest.main()
