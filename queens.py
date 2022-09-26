@@ -63,8 +63,13 @@ class QueensState:
     def __init__(self, rows: int, columns: int):
         """Initializes the chessboard to have the given numbers of rows and columns,
         with no queens occupying any of its cells."""
-        pass
-
+        #assuming an n x m board, the board will be a list with n lists (n rows), each of m size (m columns).
+        self.board = []
+        for i in range(rows):
+            rowLst = []
+            for j in range(columns):
+                rowLst.append("")
+            self.board.append(rowLst)
 
     def queen_count(self) -> int:
         """Returns the number of queens on the chessboard."""
