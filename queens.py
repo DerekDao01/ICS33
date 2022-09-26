@@ -69,12 +69,18 @@ class QueensState:
         for i in range(self.rows):
             rowLst = []
             for j in range(self.columns):
-                rowLst.append("")  #Append an empty string to each row. This means there is no queen yet
+                rowLst.append("O")  #Append an "O" string to each row. This means there is no queen yet
+                #If there is a queen, it will be "X"
             self.board.append(rowLst)
 
     def queen_count(self) -> int:
         """Returns the number of queens on the chessboard."""
-        return 0
+        self.queenCounter = 0
+        for row in self.board:
+            for space in row:
+                if space == "X":
+                    self.queenCounter += 1
+        return self.queenCounter
 
     def queens(self) -> list[Position]:
         """Returns a list of the positions in which queens appear on the chessboard,
