@@ -17,7 +17,7 @@
 # DO NOT MODIFY THE Position NAMEDTUPLE OR THE PROVIDED EXCEPTION CLASSES.
 
 from collections import namedtuple
-
+import copy
 
 Position = namedtuple('Position', ['row', 'column'])
 
@@ -103,15 +103,18 @@ class QueensState:
         least one of the given positions."""
         #Create a new QueensState that is the same size as the original one
         newState = QueensState(self.rows, self.columns)
-        newBoard = newState.board
+        #Copy the board of the original QueensState
+        newBoard = copy.deepcopy(queenState.board)
         for position in positions:
             rowNum = position[0]
             colNum = position[1]
+            #If the space doesn't already have a queen, put one
             if newBoard[rowNum][colNum] != "X"
                 newBoard[rowNum][colNum] = "X"
+            #If it does have a queen, raise the error
             elif newBoard[rowNum][colNum] == "X":
                 raise DuplicateQueenError
-
+        return newState
 
     def with_queens_removed(self, positions: list[Position]) -> 'QueensState':
         """Builds a new QueensState with queens removed from the given positions.
