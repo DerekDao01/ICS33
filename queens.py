@@ -37,10 +37,8 @@ class DuplicateQueenError(Exception):
         """Initializes the exception, given a position where the duplicate queen exists."""
         self._position = position
 
-
     def __str__(self) -> str:
         return f'duplicate queen in row {self._position.row} column {self._position.column}'
-
 
 
 class MissingQueenError(Exception):
@@ -64,42 +62,40 @@ class QueensState:
         """Initializes the chessboard to have the given numbers of rows and columns,
         with no queens occupying any of its cells."""
         #assuming an n x m board, the board will be a list with n lists (n rows), each of m size (m columns).
+        self.rows = rows
+        self.columns = columns
         self.board = []
-        for i in range(rows):
+        #Append the "rows" to the board variable
+        for i in range(self.rows):
             rowLst = []
-            for j in range(columns):
-                rowLst.append("")
+            for j in range(self.columns):
+                rowLst.append("")  #Append an empty string to each row. This means there is no queen yet
             self.board.append(rowLst)
 
     def queen_count(self) -> int:
         """Returns the number of queens on the chessboard."""
         return 0
 
-
     def queens(self) -> list[Position]:
         """Returns a list of the positions in which queens appear on the chessboard,
         arranged in no particular order."""
         pass
-
 
     def has_queen(self, position: Position) -> bool:
         """Returns True if a queen occupies the given position on the chessboard, or
         False otherwise."""
         pass
 
-
     def any_queens_unsafe(self) -> bool:
         """Returns True if any queens on the chessboard are unsafe (i.e., they can
         be captured by at least one other queen on the chessboard), or False otherwise."""
         pass
-
 
     def with_queens_added(self, positions: list[Position]) -> 'QueensState':
         """Builds a new QueensState with queens added in the given positions.
         Raises a DuplicateQueenException when there is already a queen in at
         least one of the given positions."""
         pass
-
 
     def with_queens_removed(self, positions: list[Position]) -> 'QueensState':
         """Builds a new QueensState with queens removed from the given positions.
