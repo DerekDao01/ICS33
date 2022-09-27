@@ -38,6 +38,15 @@ class TestQueensState(unittest.TestCase):
         newState = state.with_queens_added(positions)
         self.assertEqual(newState.has_queen(pos1), True)
 
+    def test_has_queen_false(self):
+        #Test if there is a queen at a certain position: expecting value to be false
+        state = QueensState(8,8)
+        pos1 = Position(1,1)
+        pos2 = Position(2,2)
+        positions = [pos1]
+        newState = state.with_queens_added(positions)
+        self.assertEqual(newState.has_queen(pos2), False)
+
 
 if __name__ == '__main__':
     unittest.main()
