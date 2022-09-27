@@ -19,6 +19,14 @@ class TestQueensState(unittest.TestCase):
         state = QueensState(8, 8)
         self.assertEqual(state.queen_count(), 0)
 
+    def test_queen_count_not_zero(self):
+        state = QueensState(8,8)
+        pos1 = Position(1,1)
+        pos2 = Position(2,2)
+        positions = [pos1, pos2]
+        newState = state.with_queens_added(positions)
+        self.assertEqual(newState.queen_count(), 2)
+
     def test_with_queens_added(self):
         state = QueensState(8,8)
         pos1 = Position(1,1)
