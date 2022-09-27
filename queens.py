@@ -111,7 +111,8 @@ class QueensState:
         #Create a new QueensState that is the same size as the original one
         newState = QueensState(self.rows, self.columns)
         #Copy the board of the original QueensState
-        newBoard = copy.deepcopy(self.board)
+        newState.board = copy.deepcopy(self.board)
+        newBoard = newState.board
         for position in positions:
             rowNum = position[0]
             colNum = position[1]
