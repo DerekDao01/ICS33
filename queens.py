@@ -90,7 +90,14 @@ class QueensState:
     def has_queen(self, position: Position) -> bool:
         """Returns True if a queen occupies the given position on the chessboard, or
         False otherwise."""
-        pass
+        #Make a note of the row and column position
+        rowNum = position[0]
+        colNum = position[1]
+        if self.board[rowNum][colNum] == "X":
+            return True
+        else:
+            return False
+
 
     def any_queens_unsafe(self) -> bool:
         """Returns True if any queens on the chessboard are unsafe (i.e., they can
@@ -104,16 +111,16 @@ class QueensState:
         #Create a new QueensState that is the same size as the original one
         newState = QueensState(self.rows, self.columns)
         #Copy the board of the original QueensState
-        newBoard = copy.deepcopy(queenState.board)
+        newBoard = copy.deepcopy(self.board)
         for position in positions:
             rowNum = position[0]
             colNum = position[1]
             #If the space doesn't already have a queen, put one
-            if newBoard[rowNum][colNum] != "X"
+            if newBoard[rowNum][colNum] != "X":
                 newBoard[rowNum][colNum] = "X"
             #If it does have a queen, raise the error
             elif newBoard[rowNum][colNum] == "X":
-                raise DuplicateQueenError
+                raise DuplicateQueenError(position)
         return newState
 
     def with_queens_removed(self, positions: list[Position]) -> 'QueensState':
