@@ -38,6 +38,7 @@ class TestQueensState(unittest.TestCase):
         except DuplicateQueenError as DupQueen:
             self.assertEqual(str(DupQueen), 'duplicate queen in row 2 column 2')
 
+
     def test_has_queen_true(self):
         #Test if there is a queen at a certain position: expecting value to be true
         state = QueensState(8, 8)
@@ -54,6 +55,17 @@ class TestQueensState(unittest.TestCase):
         positions = [pos1]
         newState = state.with_queens_added(positions)
         self.assertEqual(newState.has_queen(pos2), False)
+
+    def test_queens(self):
+        #Test to see if the function Queens can detect which spaces have queens
+        state = QueensState(8,8)
+        pos1 = Position(1,1)
+        pos2 = Position(2,2)
+        positions1 = [pos1, pos2] #positions1 is just the list of positions when we make our object
+        newState = state.with_queens_added(positions1)
+        positions2 = newState.queens() #positions2 returns the positions of the queens on the board
+        self.assertEqual(positions1, positions2)
+
 
 
 if __name__ == '__main__':
