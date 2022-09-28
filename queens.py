@@ -170,7 +170,7 @@ class QueensState:
             #If the space has a queen, remove it
             if newBoard[rowNum][colNum] == "X":
                 queenCounter += 1
-                newBoard[rowNum][colNum] = ""
+                newBoard[rowNum][colNum] = "O"
             #If the method did not detect a queen in a given position, raise the error
             elif newBoard[rowNum][colNum] == "O":
                 raise MissingQueenError(position)

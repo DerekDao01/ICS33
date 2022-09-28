@@ -38,7 +38,7 @@ class TestQueensState(unittest.TestCase):
         except DuplicateQueenError as DupQueen:
             self.assertEqual(str(DupQueen), 'duplicate queen in row 2 column 2')
 
-    def test_with_queens_removed(self):
+    def test_with_queens_removed_error(self):
         state = QueensState(8,8)
         pos1 = Position(1,1)
         pos2 = Position(2,2)
@@ -50,6 +50,16 @@ class TestQueensState(unittest.TestCase):
             newState2 = newState1.with_queens_removed(positions2)
         except MissingQueenError as MisQueen:
             self.assertEqual(str(MisQueen), 'missing queen in row 3 column 3')
+
+    def test_with_queens_removed_success(self):
+        state = QueensState(8,8)
+        pos1 = Position(1,1)
+        pos2 = Position(2,2)
+        positions1 = [pos1, pos2] #Use this to create the second board.
+        positions2 = [pos1, pos2]   #Use this to remove queens. NOT expecting error
+        newState1 = state.with_queens_added(positions1)
+        newState2 = newState1.with_queens_removed(positions2)
+        self.assertEqual(state.board, newState2.board)
 
     def test_has_queen_true(self):
         #Test if there is a queen at a certain position: expecting value to be true
