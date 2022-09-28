@@ -112,6 +112,36 @@ class QueensState:
     def any_queens_unsafe(self) -> bool:
         """Returns True if any queens on the chessboard are unsafe (i.e., they can
         be captured by at least one other queen on the chessboard), or False otherwise."""
+        board = self.board
+        for i, row in enumerate(board):
+            for j, space in enumerate(row):
+                if space == "X": #If the space is a queen, check to see if it's unsafe
+                    #check the same row and column by looking for equal i & j values
+                    for k, row in enumerate(board):
+                        for l, space in enumerate(row):
+                            #If theres a queen, check if it has the same
+                            #row or column as the original, but not the same exact coordinate
+                            if (space == "X" and k == i) and (l != j):
+                                return True
+                            elif (space == "X" and l == j) and (k != i):
+                                return True
+                    #Check diagonals
+                    for k, row in enumerate(board):
+                        for l, space in enumerate(row):
+                            #If theres another queen and the difference between
+                            #their horizontal and vertical spaces are the same, it can be captured
+                            if space == "X":
+                                rowDif = abs(k-i)
+                                colDif = abs(l-j)
+                                if rowDif == colDif:
+                                    return True
+        return False
+
+
+
+
+
+
 
 
     def with_queens_added(self, positions: list[Position]) -> 'QueensState':
