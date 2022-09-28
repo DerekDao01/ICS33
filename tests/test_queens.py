@@ -78,5 +78,16 @@ class TestQueensState(unittest.TestCase):
         positions2 = newState.queens() #positions2 returns the positions of the queens on the board
         self.assertEqual(positions1, positions2)
 
+    def test_queens_unsafe_horizontal(self):
+        #Tests to see if any queens on the board can be captured horizontally
+        state = QueensState(8,8)
+        pos1 = Position(1,1)
+        pos2 = Position(2,1) #Tests horizontals
+        positions = [pos1, pos2]
+        newState = state.with_queens_added(positions)
+        capturable = newState.any_queens_unsafe()
+        self.assertEqual(capturable, True)
+
+
 if __name__ == '__main__':
     unittest.main()
