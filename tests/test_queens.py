@@ -88,6 +88,16 @@ class TestQueensState(unittest.TestCase):
         capturable = newState.any_queens_unsafe()
         self.assertEqual(capturable, True)
 
+    def test_queens_unsafe_vertical(self):
+        state = QueensState(8,8)
+        pos1 = Position(1,1)
+        pos2 = Position(1,2) #Tests verticals
+        positions = [pos1, pos2]
+        newState = state.with_queens_added(positions)
+        capturable = newState.any_queens_unsafe()
+        self.assertEqual(capturable, True)
+
+
 
 if __name__ == '__main__':
     unittest.main()
