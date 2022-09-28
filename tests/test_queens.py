@@ -82,7 +82,7 @@ class TestQueensState(unittest.TestCase):
         #Tests to see if any queens on the board can be captured horizontally
         state = QueensState(8,8)
         pos1 = Position(1,1)
-        pos2 = Position(2,1) #Tests horizontals
+        pos2 = Position(1,2) #Tests horizontal
         positions = [pos1, pos2]
         newState = state.with_queens_added(positions)
         capturable = newState.any_queens_unsafe()
@@ -91,11 +91,21 @@ class TestQueensState(unittest.TestCase):
     def test_queens_unsafe_vertical(self):
         state = QueensState(8,8)
         pos1 = Position(1,1)
-        pos2 = Position(1,2) #Tests verticals
+        pos2 = Position(2,1) #Tests verticals
         positions = [pos1, pos2]
         newState = state.with_queens_added(positions)
         capturable = newState.any_queens_unsafe()
         self.assertEqual(capturable, True)
+
+    def test_queens_unsafe_diagonal(self):
+        state = QueensState(8,8)
+        pos1 = Position(1,1)
+        pos2 = Position(0,2) #Tests diagonally
+        positions = [pos1, pos2]
+        newState = state.with_queens_added(positions)
+        capturable = newState.any_queens_unsafe()
+        self.assertEqual(capturable, True)
+
 
 
 
