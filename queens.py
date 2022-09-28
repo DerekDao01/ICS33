@@ -85,7 +85,17 @@ class QueensState:
     def queens(self) -> list[Position]:
         """Returns a list of the positions in which queens appear on the chessboard,
         arranged in no particular order."""
-        pass
+        #Initialize the list that will be returned
+        queenLst = []
+        board = self.board
+        #Check every space on the board to see if it's a queen
+        for i, row in enumerate(board):   #i will refer to the row number
+            for j, space in enumerate(row):    #j will refer to the column number
+                if space == "X": #"X" is queen
+                    pos = Position(i,j)
+                    queenLst.append(pos)
+        return queenLst
+
 
     def has_queen(self, position: Position) -> bool:
         """Returns True if a queen occupies the given position on the chessboard, or
