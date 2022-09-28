@@ -112,7 +112,7 @@ class QueensState:
     def any_queens_unsafe(self) -> bool:
         """Returns True if any queens on the chessboard are unsafe (i.e., they can
         be captured by at least one other queen on the chessboard), or False otherwise."""
-        pass
+
 
     def with_queens_added(self, positions: list[Position]) -> 'QueensState':
         """Builds a new QueensState with queens added in the given positions.
@@ -149,10 +149,10 @@ class QueensState:
             rowNum = position[0]
             colNum = position[1]
             #If the space has a queen, remove it
-            if newBoard[rowNum][colNum] == "X"
+            if newBoard[rowNum][colNum] == "X":
                 queenCounter += 1
                 newBoard[rowNum][colNum] = ""
-            #If the method did not detect any queens, raise the error
-            elif newBoard[rowNum][colNum] == "":
+            #If the method did not detect a queen in a given position, raise the error
+            elif newBoard[rowNum][colNum] == "O":
                 raise MissingQueenError(position)
         return newState
