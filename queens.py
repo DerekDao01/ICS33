@@ -119,18 +119,16 @@ class QueensState:
                     #check the same row and column by looking for equal i & j values
                     for k, row in enumerate(board):
                         for l, space in enumerate(row):
-                            #If theres a queen, check if it has the same
+                            #If theres another queen, check if it has the same
                             #row or column as the original, but not the same exact coordinate
                             if (space == "X" and k == i) and (l != j):
                                 return True
                             elif (space == "X" and l == j) and (k != i):
                                 return True
-                    #Check diagonals
-                    for k, row in enumerate(board):
-                        for l, space in enumerate(row):
+                            #Check diagonals
                             #If theres another queen and the difference between
                             #their horizontal and vertical spaces are the same, it can be captured
-                            if space == "X":
+                            elif (space == "X") and (i != k and l != j):
                                 rowDif = abs(k-i)
                                 colDif = abs(l-j)
                                 if rowDif == colDif:
