@@ -96,7 +96,6 @@ class QueensState:
                     queenLst.append(pos)
         return queenLst
 
-
     def has_queen(self, position: Position) -> bool:
         """Returns True if a queen occupies the given position on the chessboard, or
         False otherwise."""
@@ -107,7 +106,6 @@ class QueensState:
             return True
         else:
             return False
-
 
     def any_queens_unsafe(self) -> bool:
         """Returns True if any queens on the chessboard are unsafe (i.e., they can
@@ -134,13 +132,6 @@ class QueensState:
                                 if rowDif == colDif:
                                     return True
         return False
-
-
-
-
-
-
-
 
     def with_queens_added(self, positions: list[Position]) -> 'QueensState':
         """Builds a new QueensState with queens added in the given positions.
