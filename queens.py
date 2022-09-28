@@ -138,4 +138,21 @@ class QueensState:
         """Builds a new QueensState with queens removed from the given positions.
         Raises a MissingQueenException when there is no queen in at least one of
         the given positions."""
-        pass
+        #Create a new QueensState that is the same size as the original one
+        newState = QueensState(self.rows, self.columns)
+        #Copy the board of the original QueensState
+        newState.board = copy.deepcopy(self.board)
+        newBoard = newState.board
+        #Create a variable to track how many queens are on the board before removing them
+        queenCounter = 0
+        for position in positions:
+            rowNum = position[0]
+            colNum = position[1]
+            #If the space has a queen, remove it
+            if newBoard[rowNum][colNum] == "X"
+                queenCounter += 1
+                newBoard[rowNum][colNum] = ""
+            #If the method did not detect any queens, raise the error
+            elif newBoard[rowNum][colNum] == "":
+                raise MissingQueenError(position)
+        return newState
